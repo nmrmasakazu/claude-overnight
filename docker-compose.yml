@@ -1,0 +1,14 @@
+services:
+  claude:
+    build:
+      context: .
+    image: claude-overnight:latest
+    container_name: claude-overnight
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ~/.claude:/home/node/.claude
+      - ./TASK.md:/TASK.md
+      - ${REPO_PATH}:/target
+    restart: "no"
