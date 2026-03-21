@@ -21,14 +21,13 @@ ENV PATH=$PATH:/usr/local/share/npm-global/bin
 
 RUN npm install -g @anthropic-ai/claude-code
 
-# Download official Anthropic devcontainer firewall script
+# Download official Anthropic devcontainer firewall script and set up permissions
+USER root
 RUN curl -fsSL https://raw.githubusercontent.com/anthropics/claude-code/main/.devcontainer/init-firewall.sh \
     -o /usr/local/bin/init-firewall.sh
 
 COPY --chown=node:node entrypoint.sh /usr/local/bin/entrypoint.sh
 
-# Grant 'node' passwordless sudo for the firewall script only
-USER root
 RUN chmod +x /usr/local/bin/init-firewall.sh /usr/local/bin/entrypoint.sh && \
     echo "node ALL=(root) NOPASSWD: /usr/local/bin/init-firewall.sh" \
       > /etc/sudoers.d/node-firewall && \
