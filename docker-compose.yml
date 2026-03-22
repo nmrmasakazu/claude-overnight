@@ -7,6 +7,8 @@ services:
     cap_add:
       - NET_ADMIN
       - NET_RAW
+    environment:
+      - EXTRA_ALLOWED_DOMAINS=${EXTRA_ALLOWED_DOMAINS:-}
     volumes:
       - ~/.claude:/home/node/.claude
       - ~/.claude.json:/home/node/.claude.json

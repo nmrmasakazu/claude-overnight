@@ -27,9 +27,10 @@ RUN curl -fsSL https://raw.githubusercontent.com/anthropics/claude-code/main/.de
     -o /usr/local/bin/init-firewall.sh
 
 COPY --chown=node:node entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY --chown=node:node add-custom-domains.sh /usr/local/bin/add-custom-domains.sh
 
-RUN chmod +x /usr/local/bin/init-firewall.sh /usr/local/bin/entrypoint.sh && \
-    echo "node ALL=(root) NOPASSWD: /usr/local/bin/init-firewall.sh" \
+RUN chmod +x /usr/local/bin/init-firewall.sh /usr/local/bin/entrypoint.sh /usr/local/bin/add-custom-domains.sh && \
+    echo "node ALL=(root) NOPASSWD: SETENV: /usr/local/bin/init-firewall.sh, /usr/local/bin/add-custom-domains.sh" \
       > /etc/sudoers.d/node-firewall && \
     chmod 0440 /etc/sudoers.d/node-firewall
 

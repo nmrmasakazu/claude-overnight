@@ -38,6 +38,14 @@ Logs are saved to `claude.log` in the target repository.
 docker compose down
 ```
 
+## Custom Allowed Domains
+
+To allow additional domains beyond the defaults, set `EXTRA_ALLOWED_DOMAINS` (comma-separated):
+
+```sh
+EXTRA_ALLOWED_DOMAINS="pypi.org,files.pythonhosted.org" claude-overnight
+```
+
 ## Shell Access
 
 To open a shell in the running container:

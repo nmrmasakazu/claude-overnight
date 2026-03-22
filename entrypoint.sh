@@ -2,6 +2,7 @@
 set -euo pipefail
 
 sudo /usr/local/bin/init-firewall.sh
+sudo -E /usr/local/bin/add-custom-domains.sh
 
 [[ ! -f /TASK.md ]] && { echo "ERROR: TASK.md not found." >&2; exit 1; }
 TASK=$(cat /TASK.md)
