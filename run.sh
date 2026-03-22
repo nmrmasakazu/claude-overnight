@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 
-TASK_FILE="$(pwd)/${1:-TASK.md}"
+ARG="${1:-TASK.md}"
+if [[ "$ARG" = /* ]]; then
+    TASK_FILE="$ARG"
+else
+    TASK_FILE="$(pwd)/$ARG"
+fi
 if [[ ! -f "$TASK_FILE" ]]; then
-    echo "ERROR: $(basename "$TASK_FILE") not found in current directory." >&2
+    echo "ERROR: $TASK_FILE not found." >&2
     exit 1
 fi
 
