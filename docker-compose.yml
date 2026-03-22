@@ -12,6 +12,6 @@ services:
     volumes:
       - ~/.claude:/home/node/.claude
       - ~/.claude.json:/home/node/.claude.json
-      - ${TASK_FILE}:/TASK.md:ro
+      - ${TASK_FILE}:/TASK.md
       - ${REPO_PATH}:/target
     restart: "no"

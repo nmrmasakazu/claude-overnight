@@ -30,8 +30,6 @@ claude-overnight            # uses TASK.md by default
 claude-overnight mytask.md  # or specify a filename
 ```
 
-Logs are saved to `claude.log` in the target repository.
-
 ## Stop
 
 ```sh
@@ -52,4 +50,8 @@ To open a shell in the running container:
 
 ```sh
 docker exec -it claude-overnight bash
+claude --dangerously-skip-permissions
+
+/login
+@/TASK.md
 ```

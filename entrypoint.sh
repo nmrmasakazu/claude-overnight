@@ -13,7 +13,7 @@ TASK=$(cat /TASK.md)
 
 [[ ! -d /target ]] && { echo "ERROR: REPO_PATH not mounted." >&2; exit 1; }
 
-echo "=== Claude starting - $(date '+%Y-%m-%d %H:%M:%S') ==="
-cd /target
-claude --dangerously-skip-permissions --print "$TASK" 2>&1 | tee claude.log
-echo "=== Claude done - $(date '+%Y-%m-%d %H:%M:%S') ==="
+echo "=== Starting - $(date '+%Y-%m-%d %H:%M:%S') ==="
+
+# Keep container running after task completes
+tail -f /dev/null
