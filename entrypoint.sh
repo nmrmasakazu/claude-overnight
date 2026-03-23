@@ -15,5 +15,4 @@ TASK=$(cat /TASK.md)
 
 echo "=== Starting - $(date '+%Y-%m-%d %H:%M:%S') ==="
 
-# Keep container running after task completes
-tail -f /dev/null
+exec claude --dangerously-skip-permissions
