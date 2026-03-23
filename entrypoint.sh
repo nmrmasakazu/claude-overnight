@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+cp -r /tmp/claude-config/* /home/node/.claude/ 2>/dev/null || echo "Failed to copy claude config directory"
+cp /tmp/claude.json /home/node/.claude.json 2>/dev/null || echo "Failed to copy claude.json"
+
 sudo /usr/local/bin/init-firewall.sh
 sudo -E /usr/local/bin/add-custom-domains.sh
 

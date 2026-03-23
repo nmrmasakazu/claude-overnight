@@ -3,15 +3,15 @@ services:
     build:
       context: .
     image: claude-overnight:latest
-    container_name: claude-overnight
     cap_add:
       - NET_ADMIN
       - NET_RAW
     environment:
       - EXTRA_ALLOWED_DOMAINS=${EXTRA_ALLOWED_DOMAINS:-}
+      - TZ=${TZ:-Asia/Tokyo}
     volumes:
-      - ~/.claude:/home/node/.claude
-      - ~/.claude.json:/home/node/.claude.json
-      - ${TASK_FILE}:/TASK.md
+      - ~/.claude:/tmp/claude-config:ro
+      - ~/.claude.json:/tmp/claude.json:ro
+      - ${TASK_FILE}:/TASK.md:ro
       - ${REPO_PATH}:/target
     restart: "no"

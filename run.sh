@@ -19,4 +19,4 @@ export TASK_FILE
 echo "Starting claude-overnight"
 
 # docker compose -f "$SCRIPT_DIR/docker-compose.yml" build
-docker compose -f "$SCRIPT_DIR/docker-compose.yml" run --rm claude
+caffeinate -i -t 3600 docker compose -f "$SCRIPT_DIR/docker-compose.yml" run --rm claude

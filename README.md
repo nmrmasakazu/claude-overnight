@@ -32,8 +32,10 @@ claude-overnight mytask.md  # or specify a filename
 
 ## Stop
 
+Press `Ctrl+C` to stop the running container, or from another terminal:
+
 ```sh
-docker compose down
+docker compose -f /path/to/claude-overnight/docker-compose.yml down
 ```
 
 ## Custom Allowed Domains

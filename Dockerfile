@@ -1,7 +1,5 @@
 FROM node:20
 
-ENV TZ=Asia/Tokyo
-
 # Firewall tools + utilities
 RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo curl jq git iptables ipset iproute2 dnsutils aggregate ca-certificates \
